@@ -13,11 +13,19 @@ function UserForm({ onUserAdd }) {
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="name">Name</label>
-        <input value={name} onChange={(e) => setName(e.target.value)} />
+        <input
+          id="name"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+        />
       </div>
       <div>
-        <label htmlFor="name">Email</label>
-        <input value={email} onChange={(e) => setEmail(e.target.value)} />
+        <label htmlFor="email">Enter Email</label>
+        <input
+          id="email"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+        />
       </div>
       <button>Add User</button>
     </form>
