@@ -17,8 +17,12 @@ test("it shows two inputs and a button", () => {
 
 test("NOT THE BEST IMPLEMENTATION: it calls the onUserAdd when the form is submitted", () => {
   // NOT THE BEST IMPLEMENTATION
+  const argList = [];
+  const callback = (...args) => {
+    argList.push(args);
+  };
   // Try to render my component
-  render(<UserForm />);
+  render(<UserForm onUserAdd={callback} />);
 
   // Find the two inputs
   const [nameInput, emailInput] = screen.getAllByRole("textbox");
@@ -32,8 +36,14 @@ test("NOT THE BEST IMPLEMENTATION: it calls the onUserAdd when the form is submi
   user.keyboard("jane@jane.com");
 
   // Find the button
+  const button = screen.getByRole("button");
+
   // Simulate clicking the button
+  user.click(button);
+
   // Assertion to make sure 'onUserAdd' gets called with email/name
+  expect(argList).toHaveLength(1);
+  expect(argList[0]).toEqual([{ name: "jane", email: "jane@jane.com" }]);
 });
 
 test("THE BEST IMPLEMENTATION: it calls the onUserAdd when the form is submitted", () => {
