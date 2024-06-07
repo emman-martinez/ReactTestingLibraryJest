@@ -20,7 +20,7 @@ function UserForm({ onUserAdd }) {
         />
       </div>
       <div>
-        <label htmlFor="email">Enter Email</label>
+        <label htmlFor="email">Email</label>
         <input
           id="email"
           onChange={(e) => setEmail(e.target.value)}
